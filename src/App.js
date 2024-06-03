@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { loadCartFromStorage } from "./redux/actions/action";
+import Products from "./components/Products/Products";
+import SingleProduct from "./components/SingleProduct/SingleProduct";
+import Cart from "./components/Cart/Cart";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./components/Header/Header";
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadCartFromStorage());
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route element={<Products />} path="/" />
+        <Route element={<SingleProduct />} path="/products/:id" />
+        <Route element={<Cart />} path="/cart" />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

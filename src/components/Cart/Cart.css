@@ -1,0 +1,39 @@
+.cart-container {
+    margin: 20px auto;
+    max-width: 900px;
+    width: 100%;
+}
+
+.table-responsive {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.table thead th {
+    background-color: #f8f9fa;
+}
+
+.btn-sm {
+    font-size: 0.8rem;
+}
+
+.text-right {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.action-buttons .btn {
+    flex: 1;
+    margin: 5px;
+}
+
+@media (max-width: 576px) {
+    .table {
+        font-size: 0.8rem;
+    }
+}
